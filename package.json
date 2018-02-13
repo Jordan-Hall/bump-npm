@@ -1,0 +1,20 @@
+{
+  "name": "bump-npm",
+  "version": "0.0.9",
+  "description": "bump package version and publish",
+  "main": "index.js",
+  "author": "Jordan Hall",
+  "license": "None",
+  "private": false,
+  "dependencies": {
+    "commander": "^2.14.1",
+    "semver": "^5.5.0"
+  },
+  "scripts": {
+    "patch": "node ./src/pnpm.js publish -r patch"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "bump-npm": "./src/pnpm.js"
+  }
+}
