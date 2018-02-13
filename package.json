@@ -1,6 +1,6 @@
 {
   "name": "bump-npm",
-  "version": "0.0.9",
+  "version": "1.0.2",
   "description": "bump package version and publish",
   "main": "index.js",
   "author": "Jordan Hall",
@@ -11,7 +11,9 @@
     "semver": "^5.5.0"
   },
   "scripts": {
-    "patch": "node ./src/pnpm.js publish -r patch"
+    "patch": "node ./src/pnpm.js publish -r patch",
+    "minor": "node ./src/pnpm.js publish -r minor",
+    "major": "node ./src/pnpm.js publish -r major"
   },
   "preferGlobal": true,
   "bin": {

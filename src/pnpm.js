@@ -9,6 +9,6 @@ const fileName = `${process.cwd()}/package.json`;
 const {version} = require(fileName);
 program
   .version(version)
-  .description('Fake package manager')
+  .description('upgrade npm package')
   .command('publish', 'publish package').alias('u')
   .parse(process.argv);

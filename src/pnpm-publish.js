@@ -35,33 +35,32 @@ async function run() {
   }
 
   program
-    .option("-r, --release", "release type semver version")
-    .option("-d2p, --deptopeer", "dependencies to peer")
-    .option("-l, --loose", "Interpret versions and ranges loosely")
+    .option("-r, --release <release>", "release type semver version")
+    .option("-d2p, --devtopeer <devtopeer>", "dependencies to peer")
+    .option("-l, --loose <devtopeer>", "Interpret versions and ranges loosely")
     .option(
-      "-pre",
+      "-pre <prefix>",
       "Identifier to be used to prefix premajor, preminor, prepatch or prerelease version increments"
     )
     .parse(process.argv);
 
-  var args = program.args;
-
   const settings = {
-    release: args.release || publishDefault.release,
-    loose: args.loose || publishDefault.loose,
-    prefix: args.prefix || publishDefault.prefix,
-    d2p: args.deptopeer || publishDefault.d2p
+    release: program.release || publishDefault.release,
+    loose: program.loose || publishDefault.loose,
+    prefix: program.prefix || publishDefault.prefix,
+    d2p: program.deptopeer || publishDefault.d2p
   };
+
 
   const newVersion = semver.inc(
     currentVersion,
     settings.release,
     settings.loose,
     settings.prefix
-  )
+  );
   updateJson(
     newVersion,
-    args.deptopeer
+    settings.deptopeer
   );
 
   const { stdout, stderr } = await exec("npm publish");
