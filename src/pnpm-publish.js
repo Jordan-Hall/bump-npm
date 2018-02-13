@@ -72,14 +72,6 @@ async function run() {
   } else {
     console.log(stdout);
   }
-
-  const { stdout2, stderr2 } = await exec(`npm version ${newVersion}`);
-
-  if (stderr2) {
-    console.log('published to npm but not git');
-  } else {
-    console.log(stdout2);
-  }
 }
 
 run();
